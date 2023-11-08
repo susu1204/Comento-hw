@@ -12,27 +12,26 @@
     <div class="calculator">
         <div class="display" id="display">0</div>
         <div class="buttons">
-            <button class="button gray">C</button>
-            <button class="button gray">%</button>
-            <button class="button gray">±</button>
-            <button class="button orange">÷</button>
-            <button class="button">7</button>
-            <button class="button">8</button>
-            <button class="button">9</button>
-            <button class="button orange">×</button>
-            <button class="button">4</button>
-            <button class="button">5</button>
-            <button class="button">6</button>
-            <button class="button orange">-</button>
-            <button class="button">1</button>
-            <button class="button">2</button>
-            <button class="button">3</button>
-            <button class="button orange">+</button>
-            <button class="button double">0</button>
-            <button class="button">.</button>
-            <button class="button orange">=</button>
+            <button class="button gray" onclick="clear()">C</button>
+            <button class="button gray" onclick="click('%')">%</button>
+            <button class="button gray" onclick="click('±')">±</button>
+            <button class="button orange" onclick="click('/')">÷</button>
+            <button class="button" onclick="click('7')">7</button>
+            <button class="button" onclick="click('8')">8</button>
+            <button class="button" onclick="click('9')">9</button>
+            <button class="button orange" onclick="click('*')">×</button>
+            <button class="button" onclick="click('4')">4</button>
+            <button class="button" onclick="click('5')">5</button>
+            <button class="button" onclick="click('6')">6</button>
+            <button class="button orange" onclick="click('-')">-</button>
+            <button class="button" onclick="click('1')">1</button>
+            <button class="button" onclick="click('2')">2</button>
+            <button class="button" onclick="click('3')">3</button>
+            <button class="button orange" onclick="click('+')">+</button>
+            <button class="button double" onclick="click('0')">0</button>
+            <button class="button" onclick="click('.')">.</button>
+            <button class="button orange" onclick="calculate()">=</button>
         </div>
-        
     </div>
 
 </body>
