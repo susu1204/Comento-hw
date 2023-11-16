@@ -9,7 +9,7 @@ buttons.forEach(button => {
     button.addEventListener('click', function() {
         const buttonText = button.textContent;
         if (buttonText === 'C') {
-            display.textContent = '0';
+            resetDisplayStyle();
         } else if (buttonText === '=') {
             try {
                 const expression = display.textContent
@@ -24,14 +24,24 @@ buttons.forEach(button => {
                 display.textContent = buttonText;
             } else {
                 const newContent = display.textContent + buttonText;
-                if (newContent.length > 15) {
-                    display.style.fontSize = '18px';
-                    display.style.whiteSpace = 'pre-line';
-                }
+                
                 display.textContent = newContent;
-                // 줄바꾸면서 글자 크기가 한번 작아지고 난 뒤 또 반복해서 작아지지는 않음.
-                // 한번 글씨가 작아지고 나면 c를 눌렀을때 원래 크기로 돌아오지 않음.
+                updateFontSize();
             }
         }
     });
 });
+
+function updateFontSize() {
+    const currentFontSize = parseInt(window.getComputedStyle(display).fontSize);
+    const maxCharacters = Math.floor((display.offsetWidth - 10) / (currentFontSize * 0.6)); 
+    if (display.textContent.length > maxCharacters) {
+        display.style.fontSize = `${currentFontSize * 0.9}px`;
+    }
+}
+
+function resetDisplayStyle() {
+    display.textContent = '0';
+    display.style.fontSize = '28px';
+}
+
