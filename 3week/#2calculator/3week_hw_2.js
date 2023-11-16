@@ -15,9 +15,7 @@ buttons.forEach(button => {
                 const expression = display.textContent
                     .replace(/×/g, '*')
                     .replace(/÷/g, '/');
-                const result = evaluate(expression);
-                displayResult(result);
-                updateFontSize();
+                display.textContent = evaluate(expression);
             } catch (error) {
                 display.textContent = 'Error';
             }
@@ -26,6 +24,7 @@ buttons.forEach(button => {
                 display.textContent = buttonText;
             } else {
                 const newContent = display.textContent + buttonText;
+                
                 display.textContent = newContent;
                 updateFontSize();
             }
@@ -33,14 +32,9 @@ buttons.forEach(button => {
     });
 });
 
-function displayResult(result) {
-    const resultString = result.toLocaleString('fullwide', { useGrouping: false });
-    display.textContent = resultString;
-}
-
 function updateFontSize() {
     const currentFontSize = parseInt(window.getComputedStyle(display).fontSize);
-    const maxCharacters = Math.floor((display.offsetWidth - 10) / (currentFontSize * 0.6));
+    const maxCharacters = Math.floor((display.offsetWidth - 10) / (currentFontSize * 0.6)); 
     if (display.textContent.length > maxCharacters) {
         display.style.fontSize = `${currentFontSize * 0.9}px`;
     }
@@ -50,3 +44,4 @@ function resetDisplayStyle() {
     display.textContent = '0';
     display.style.fontSize = '28px';
 }
+
