@@ -15,7 +15,9 @@ buttons.forEach(button => {
                 const expression = display.textContent
                     .replace(/×/g, '*')
                     .replace(/÷/g, '/');
-                display.textContent = evaluate(expression);
+                const result = evaluate(expression);
+                displayResult(result);
+                updateFontSize();
             } catch (error) {
                 display.textContent = 'Error';
             }
@@ -24,13 +26,20 @@ buttons.forEach(button => {
                 display.textContent = buttonText;
             } else {
                 const newContent = display.textContent + buttonText;
-                
                 display.textContent = newContent;
                 updateFontSize();
             }
         }
     });
 });
+
+// function displayResult(result) {
+//     const resultString = result.toLocaleString('fullwide', {useGrouping: false});
+//     display.textContent = resultString;
+// }
+function displayResult(result) {
+    display.textContent = formatNumber(result);
+}
 
 function updateFontSize() {
     const currentFontSize = parseInt(window.getComputedStyle(display).fontSize);
@@ -45,3 +54,10 @@ function resetDisplayStyle() {
     display.style.fontSize = '28px';
 }
 
+function formatNumber(number) {
+    // 숫자를 지수 표기법으로 변환하지 않고 포맷
+    const formatter = new Intl.NumberFormat('en-US', {
+        maximumFractionDigits: 20
+    });
+    return formatter.format(number);
+}
