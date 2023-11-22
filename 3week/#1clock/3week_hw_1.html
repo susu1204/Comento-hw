@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Watch</title>
+    <link rel="stylesheet" href="3week_hw_1.css">
+</head>
+<body>
+    <div class="watch">
+        <div id="battery">배터리: <span id="batteryPercentage">100%</span></div>
+
+        <div id="clock">현재 시간<br>
+            <div id="currentTime"></div>
+        </div>
+            
+        <div id="alarms">알람 목록 <button onclick="clearAlarms()">초기화</button><br>
+            <div id="alarmsContent">No alarms set</div>
+        </div>
+            
+        
+        <div id="addAlarm">알람
+
+            <div id="timeTable">
+                <label for="hour">Hour:</label>
+                <select id="hour" required></select>
+                
+                <label for="minute">Minute:</label>
+                <select id="minute" required></select>
+                
+                <label for="second">Second:</label>
+                <select id="second" required></select>
+                
+                <button onclick="addAlarm()">추가</button>
+            </div>
+
+        </div>
+
+    </div>
+        
+    <script src="3week_hw_1.js"></script>
+
+</body>
+</html>
